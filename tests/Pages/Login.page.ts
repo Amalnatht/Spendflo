@@ -100,4 +100,11 @@ export class LoginPage{
         
     }
 
+    async checkIfUserIsSuperAdmin():Promise<boolean>{
+        if(await this.orgNameLocatorFromNavbar.count()==0){
+            return true;
+        }
+        return false;
+    }
+
 }
