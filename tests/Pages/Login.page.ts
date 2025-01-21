@@ -1,6 +1,6 @@
 import { Page, Locator } from 'playwright';
 
-class LoginPage{
+export class LoginPage{
     private readonly baseUrl: string = 'https://app.spendflo.com';
     private page : Page;
     private emailField : Locator;
@@ -32,7 +32,8 @@ class LoginPage{
 
     async enterEmailandContinue(email:string):Promise<void>{
         await this.emailField.fill(email);
-        await this.continueButton.click();
+        // await this.continueButton.click();
+        await this.emailField.press("Enter");
     }
     
     async enterPasswordandSigin(pwd:string):Promise<void>{
@@ -41,39 +42,30 @@ class LoginPage{
     }
 
     async checkforskipfornowbuttonandclick():Promise<void>{
+        await this.page.waitForLoadState();
 
-        let retries =  1;
         try{
-            while(retries<=7){
-                if (await this.skipforNowButton.count() > 0 ) {
-                    await this.skipforNowButton.isEnabled();
-                    await this.skipforNowButton.click();
-                    return;
-                }
-                await this.page.waitForTimeout(500);
-                retries++;
-            }
-            if (retries==7){
-                throw new Error ("Skip for now not present")
-            }
+            await this.skipforNowButton.waitFor({state:'visible',timeout:10000})
+            await this.skipforNowButton.click();
         }
         catch(error){
-            throw error;
             return;
         }
+
 
 
     }
 
     async checkforpendoGuideandClose():Promise<void>{
         await this.page.waitForLoadState('domcontentloaded');
-        if (await this.pendoguideCloseButton.count() > 0) { 
-            if (await this.pendoguideCloseButton.isEnabled()) {
-                await this.pendoguideCloseButton.click();
-            } else {
-                throw new Error ("Pendoguide present but not enabled")
-            }
+        try{
+            await this.pendoguideCloseButton.waitFor({state:'visible',timeout:10000})
+            await this.pendoguideCloseButton.click();
         }
+        catch(error){
+            return;
+        }
+    
     }
 
     async fetchTheOrgnamefromNavBar():Promise<void>{
@@ -92,10 +84,11 @@ class LoginPage{
             await this.orgSearch.fill(orgtobeswitchedto);
             await this.page.locator(`//button/p[text()='${orgtobeswitchedto}']`).click();
 
-            await this.page.waitForLoadState('load');
+
+            await this.page.waitForTimeout(4000);
             this.orgName = await this.orgNameLocatorFromNavbar.textContent();
             while(!this.orgName){
-                await this.page.waitForTimeout(200);  
+                await this.page.waitForTimeout(500);  
                 this.orgName = await this.orgNameLocatorFromNavbar.textContent();
             }
             
