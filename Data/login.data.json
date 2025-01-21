@@ -1,0 +1,18 @@
+ {
+        "Amalnath" : {
+            "email" : "amalnath@spendflo.com",
+            "password": "Amalnath123@",
+            "role":"Superadmin"
+        },
+
+        "selfserveuser1": {
+            "email":"selfserve-user1@testing.spendflo.io",
+            "password":"Spendflo123@",
+            "role":"Admin"
+        },
+        "Rishi S" : {
+            "email": "rishi@spendfloone.com",
+            "password":"Test@12345",
+            "role":"Admin"
+        }
+}

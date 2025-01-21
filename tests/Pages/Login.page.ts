@@ -68,14 +68,16 @@ export class LoginPage{
     
     }
 
-    async fetchTheOrgnamefromNavBar():Promise<void>{
+    async fetchTheOrgnamefromNavBar():Promise<boolean>{
         if(await this.orgNameLocatorFromNavbar.count()>0){
             this.orgName = await this.orgNameLocatorFromNavbar.textContent();
             while(!this.orgName){
                 await this.page.waitForTimeout(200);  
                 this.orgName = await this.orgNameLocatorFromNavbar.textContent();
+                return true;
             }
         }
+            return false;
     }
 
     async switchToDesiredorg(orgtobeswitchedto:string):Promise<void>{
@@ -98,13 +100,6 @@ export class LoginPage{
             
         }
         
-    }
-
-    async checkIfUserIsSuperAdmin():Promise<boolean>{
-        if(await this.orgNameLocatorFromNavbar.count()==0){
-            return true;
-        }
-        return false;
     }
 
 }
