@@ -24,7 +24,7 @@ Given("User navigates to Login page", async () => {
     await loginPage.NavigatetoSpendflo();
 });
 
-When("User Enters details and clicks on Sign in with credentials for user {string}", async function (user:string) {
+When("User enters the credentials for user {string} and click on signin", async function (user:string) {
 
   const userDetails = users[user];
   await loginPage.enterEmailandContinue(userDetails.email);
@@ -41,12 +41,12 @@ Then("User should be signed in", async function(){
     await expect(page).toHaveURL("https://app.spendflo.com/");
 })
 
-When("Check if pendo is visible and close it", async function(){  
+When("Close Featurewalkthrough if exists", async function(){  
     await loginPage.checkforpendoGuideandClose();
 })
 
 
-Then("Switch organization if it's not spendfloone or testorg to {string}",async function(orgname:string){
+Then("Switch organization to {string}  if user is superadmin",async function(orgname:string){
       let result = await loginPage.fetchTheOrgnamefromNavBar();
       if(result){
         await loginPage.switchToDesiredorg(orgname);
