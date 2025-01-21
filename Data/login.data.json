@@ -6,13 +6,18 @@
         },
 
         "selfserveuser1": {
-            "email":"selfserve-user1@testing.spendflo.io",
-            "password":"Spendflo123@",
+            "email":"selfserve-user1@dev-testing.spendflo.io",
+            "password":"Test@123",
             "role":"Admin"
         },
         "Rishi S" : {
             "email": "rishi@spendfloone.com",
             "password":"Test@12345",
+            "role":"Admin"
+        },
+        "spendflotest 01" : {
+            "email": "spendflotest01@gmail.com",
+            "password":"Spendflo@1234",
             "role":"Admin"
         }
 }
