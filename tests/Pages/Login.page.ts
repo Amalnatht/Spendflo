@@ -1,4 +1,4 @@
-import { Page, Locator } from 'playwright';
+import { Page, Locator, expect } from '@playwright/test';
 
 export class LoginPage{
     private readonly baseUrl: string = 'https://app.spendflo.com';
@@ -100,6 +100,15 @@ export class LoginPage{
             
         }
         
+    }
+
+    async loginsuccessful():Promise<void>{
+        await expect(this.page).toHaveURL("https://app.spendflo.com/");
+        await expect(this.page).toHaveTitle("Spendflo");
+        await expect(this.page.locator(`//h4[text()="My Tasks"]`)).toBeVisible();
+        await expect(this.page.locator(`//h4[text()="Comments Feed"]`)).toBeVisible();
+        await expect(this.page.locator(`//h4[text()="My Requests"]`)).toBeVisible();
+        await expect(this.page.locator(`//h4[text()="Upcoming Renewals"]`)).toBeVisible();
     }
 
 }

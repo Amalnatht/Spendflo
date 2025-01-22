@@ -38,7 +38,7 @@ When("Click on skip for now if visible", async function () {
 
 
 Then("User should be signed in", async function(){  
-    await expect(page).toHaveURL("https://app.spendflo.com/");
+    await loginPage.loginsuccessful();
 })
 
 When("Close Featurewalkthrough if exists", async function(){  
