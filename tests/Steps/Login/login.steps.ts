@@ -1,6 +1,6 @@
 import { Given, When, Then, Before, After, setDefaultTimeout, DataTable } from "@cucumber/cucumber";
 import { chromium, Browser, Page, expect , Locator } from "@playwright/test";
-import { LoginPage } from "../../Pages/Login.page";
+import { LoginPage } from "../../Pages/login.page";
 import * as usersData from "../../../Data/login.data.json";
 import { Users } from "../../../Data/login.data.interface";
 
@@ -21,7 +21,7 @@ Before(async function () {
 });
 
 Given("User navigates to Login page", async () => {
-    await loginPage.NavigatetoSpendflo();
+   await loginPage.NavigatetoSpendflo();
 });
 
 When("User enters the credentials for user {string} and click on signin", async function (user:string) {
@@ -39,6 +39,7 @@ When("Click on skip for now if visible", async function () {
 
 Then("User should be signed in", async function(){  
     await loginPage.loginsuccessful();
+    // const ss = await loginPage.page.screenshot({path : 'screenshot.png'});
 })
 
 When("Close Featurewalkthrough if exists", async function(){  
