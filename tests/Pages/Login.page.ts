@@ -1,8 +1,8 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator, expect, Response } from '@playwright/test';
 
 export class LoginPage{
     private readonly baseUrl: string = 'https://app.spendflo.com';
-    private page : Page;
+    page : Page;
     private emailField : Locator;
     private passwordField : Locator;
     private continueButton : Locator;
@@ -26,15 +26,35 @@ export class LoginPage{
         this.orgSearch = page.locator("//input[@name='orgsearch']");
     }
 
-    async NavigatetoSpendflo():Promise<void>{
-        await this.page.goto(this.baseUrl);
+    async NavigatetoSpendflo():Promise<Response | null>{
+        return this.page.goto(this.baseUrl);
     }
 
     async enterEmailandContinue(email:string):Promise<void>{
-        await this.emailField.fill(email);
-        // await this.continueButton.click();
-        await this.emailField.press("Enter");
+            await this.emailField.fill(email);
+            await this.emailField.press("Enter");
+
     }
+
+    // async validatonAfterEnteringemailandContinue():Promise<void>{
+    //     try{
+    //         await expect(this.passwordField).toBeVisible();
+    //         await expect(this.siginButton).toBeVisible();
+
+    //     }
+    //     catch(error :unknown){
+    //         if(error instanceof Error){
+    //             if(error.message.includes("password")){
+    //                 throw new Error("Password field not visible");
+    //             }
+    //             if(error.message.includes("Sign in")){
+    //                 throw new Error ("Sign in button not visible");
+    //             }
+    //         }
+
+    //     }
+
+    // }
     
     async enterPasswordandSigin(pwd:string):Promise<void>{
         await this.passwordField.fill(pwd);
@@ -69,15 +89,18 @@ export class LoginPage{
     }
 
     async fetchTheOrgnamefromNavBar():Promise<boolean>{
-        if(await this.orgNameLocatorFromNavbar.count()>0){
-            this.orgName = await this.orgNameLocatorFromNavbar.textContent();
-            while(!this.orgName){
-                await this.page.waitForTimeout(200);  
+        try{
+            if(await this.orgNameLocatorFromNavbar.count()>0){
+                await this.page.waitForTimeout(5000);
                 this.orgName = await this.orgNameLocatorFromNavbar.textContent();
                 return true;
             }
         }
-            return false;
+        catch(error){
+                console.log("Orgname not visible in the navbar",error)
+
+        }
+        return false;
     }
 
     async switchToDesiredorg(orgtobeswitchedto:string):Promise<void>{
@@ -103,12 +126,14 @@ export class LoginPage{
     }
 
     async loginsuccessful():Promise<void>{
-        await expect(this.page).toHaveURL("https://app.spendflo.com/");
-        await expect(this.page).toHaveTitle("Spendflo");
-        await expect(this.page.locator(`//h4[text()="My Tasks"]`)).toBeVisible();
-        await expect(this.page.locator(`//h4[text()="Comments Feed"]`)).toBeVisible();
-        await expect(this.page.locator(`//h4[text()="My Requests"]`)).toBeVisible();
-        await expect(this.page.locator(`//h4[text()="Upcoming Renewals"]`)).toBeVisible();
+        await Promise.all([
+            expect(this.page).toHaveURL("https://app.spendflo.com/"),
+            expect(this.page).toHaveTitle("Spendflo"),
+            expect(this.page.locator(`//h4[text()="My Tasks"]`)).toBeVisible(),
+            expect(this.page.locator(`//h4[text()="Comments Feed"]`)).toBeVisible(),
+            expect(this.page.locator(`//h4[text()="My Requests"]`)).toBeVisible(),
+            expect(this.page.locator(`//h4[text()="Upcoming Renewals"]`)).toBeVisible()
+        ]);
     }
 
 }
