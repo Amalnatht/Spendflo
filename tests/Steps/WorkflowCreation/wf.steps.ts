@@ -23,9 +23,14 @@ Before(async function () {
   loginUtils = new LoginUtils(loginPage);
 });
 
-Given("Superadmin {string} logs in and switches to {string} organization",  async function(user : string, orgname : string){
-    const userDetails = users[user];
-    await loginUtils.loginAsUser(userDetails.email,userDetails.password,orgname)
+// Given("Superadmin {string} logs in and switches to {string} organization",  async function(user : string, orgname : string){
+//     const userDetails = users[user];
+//     await loginUtils.loginAsSuperadmin(userDetails.email,userDetails.password,orgname)
+// })
+
+Given("User {string} logs in",  async function(user : string){
+  const userDetails = users[user];
+  await loginUtils.loginAsUser(userDetails.email,userDetails.password)
 })
 
 Then("User navigates to settings workflows page",async function(){

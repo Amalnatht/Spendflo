@@ -5,23 +5,25 @@ export class LoginUtils {
         // this.loginpage = loginpage;
     }
 
-    async loginAsUser(email : string, password : string, orgname : string){
+    async loginAsSuperadmin(email : string, password : string, orgname : string){
         await this.loginpage.NavigatetoSpendflo();
         await this.loginpage.enterEmailandContinue(email);
         await this.loginpage.enterPasswordandSigin(password); 
         await this.loginpage.checkforskipfornowbuttonandclick();
         await this.loginpage.loginsuccessful();
         await this.loginpage.checkforpendoGuideandClose();
-        let result = await this.loginpage.fetchTheOrgnamefromNavBar();
-        if(result){
-          await this.loginpage.switchToDesiredorg(orgname);
-        }
-        else{
-          console.log("User logged in as non superadmin")
-        }
+        await this.loginpage.fetchTheOrgnamefromNavBar();
+        await this.loginpage.switchToDesiredorg(orgname);
 
-   
     }
+    async loginAsUser(email : string, password : string){
+      await this.loginpage.NavigatetoSpendflo();
+      await this.loginpage.enterEmailandContinue(email);
+      await this.loginpage.enterPasswordandSigin(password); 
+      await this.loginpage.checkforskipfornowbuttonandclick();
+      await this.loginpage.loginsuccessful();
+      await this.loginpage.checkforpendoGuideandClose();
 
+  }
 
 }
