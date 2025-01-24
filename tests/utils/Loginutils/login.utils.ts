@@ -2,8 +2,16 @@ import {LoginPage} from "../../Pages/login.page";
 
 export class LoginUtils {
     constructor(private loginpage : LoginPage){
-        // this.loginpage = loginpage;
+        this.loginpage = loginpage;// has no impact
     }
+
+    // or 
+    
+    // private loginpage: LoginPage; // Declare the property
+
+    // constructor(loginpage: LoginPage) {
+    //     this.loginpage = loginpage; // Explicitly assign it
+    // }
 
     async loginAsSuperadmin(email : string, password : string, orgname : string){
         await this.loginpage.NavigatetoSpendflo();
