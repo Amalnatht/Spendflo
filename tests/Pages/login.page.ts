@@ -2,7 +2,7 @@ import { Page, Locator, expect, Response } from '@playwright/test';
 
 export class LoginPage{
     private readonly baseUrl: string = 'https://app.spendflo.com';
-    page : Page;
+    private page : Page;
     private emailField : Locator;
     private passwordField : Locator;
     private continueButton : Locator;
