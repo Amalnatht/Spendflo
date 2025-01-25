@@ -13,6 +13,10 @@ export class LoginUtils {
     //     this.loginpage = loginpage; // Explicitly assign it
     // }
 
+    // async url(){
+    //     this.loginpage.
+    // }
+
     async loginAsSuperadmin(email : string, password : string, orgname : string){
         await this.loginpage.NavigatetoSpendflo();
         await this.loginpage.enterEmailandContinue(email);

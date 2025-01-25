@@ -1,7 +1,7 @@
 import { Page, Locator, expect, Response } from '@playwright/test';
 
 export class LoginPage{
-    private readonly baseUrl: string = 'https://app.spendflo.com';
+    private baseUrl : string;
     private page : Page;
     private emailField : Locator;
     private passwordField : Locator;
@@ -13,8 +13,9 @@ export class LoginPage{
     private orgName: string | null;
     private orgSearch : Locator;
 
-    constructor(page : Page){
+    constructor(page : Page, baseUrl : string){
         this.page = page;
+        this.baseUrl = baseUrl;
         this.emailField = page.locator('//input[@name="identifier"]');
         this.passwordField = page.locator('//input[@name="password"]');
         this.continueButton = page.locator(`'button:has-text("Continue")'`);
@@ -35,26 +36,6 @@ export class LoginPage{
             await this.emailField.press("Enter");
 
     }
-
-    // async validatonAfterEnteringemailandContinue():Promise<void>{
-    //     try{
-    //         await expect(this.passwordField).toBeVisible();
-    //         await expect(this.siginButton).toBeVisible();
-
-    //     }
-    //     catch(error :unknown){
-    //         if(error instanceof Error){
-    //             if(error.message.includes("password")){
-    //                 throw new Error("Password field not visible");
-    //             }
-    //             if(error.message.includes("Sign in")){
-    //                 throw new Error ("Sign in button not visible");
-    //             }
-    //         }
-
-    //     }
-
-    // }
     
     async enterPasswordandSigin(pwd:string):Promise<void>{
         await this.passwordField.fill(pwd);
@@ -127,7 +108,7 @@ export class LoginPage{
 
     async loginsuccessful():Promise<void>{
         await Promise.all([
-            expect(this.page).toHaveURL("https://app.spendflo.com/"),
+            expect(this.page).toHaveURL(this.baseUrl),
             expect(this.page).toHaveTitle("Spendflo"),
             expect(this.page.locator(`//h4[text()="My Tasks"]`)).toBeVisible(),
             expect(this.page.locator(`//h4[text()="Comments Feed"]`)).toBeVisible(),
