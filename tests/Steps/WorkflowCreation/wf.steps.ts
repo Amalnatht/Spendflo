@@ -20,6 +20,7 @@ Before(async function () {
   browser = await chromium.launch({ headless: false   });
   const context = await browser.newContext();
   page = await context.newPage();
+
 });
 
 Given("Superadmin {string} logs in to {string} and switches to {string} organization",  async function(user : string, env : string ,orgname : string){
