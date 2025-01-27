@@ -43,6 +43,7 @@ Then("User navigates to settings workflows page",async function(){
         return true;
       }
       catch(error){
+        console.log(`User navigates to settings workflows page failed ${error}`);
         return false;
       }
     });
