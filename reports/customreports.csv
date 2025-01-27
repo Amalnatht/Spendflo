@@ -1,0 +1,3 @@
+Test Name,Duration (s),Status,DateAndTime
+Superadmin logs in to env and switches to org,37.041,Pass,1/27/2025 13:13:09
+User navigates to settings workflows page,5.611,Pass,1/27/2025 13:13:15
