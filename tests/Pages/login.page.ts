@@ -13,6 +13,12 @@ export class LoginPage{
     private orgName: string | null;
     private orgSearch : Locator;
 
+    // Header locators for assertions
+    private myTasksHeader: Locator;
+    private commentsFeedHeader: Locator;
+    private myRequestsHeader: Locator;
+    private upcomingRenewalsHeader: Locator;
+
     constructor(page : Page, baseUrl : string){
         this.page = page;
         this.baseUrl = baseUrl;
@@ -25,6 +31,11 @@ export class LoginPage{
         this.orgNameLocatorFromNavbar = page.locator('//img[@alt="Rocket"]/ancestor::div[2]/preceding-sibling::div[1]//span');
         this.orgName= "";
         this.orgSearch = page.locator("//input[@name='orgsearch']");
+
+        this.myTasksHeader = page.locator('//h4[text()="My Tasks"]');
+        this.commentsFeedHeader = page.locator('//h4[text()="Comments Feed"]');
+        this.myRequestsHeader = page.locator('//h4[text()="My Requests"]');
+        this.upcomingRenewalsHeader = page.locator('//h4[text()="Upcoming Renewals"]');
     }
 
     async NavigatetoSpendflo():Promise<Response | null>{
@@ -109,11 +120,11 @@ export class LoginPage{
     async loginsuccessful():Promise<void>{
         await Promise.all([
             expect(this.page).toHaveURL(this.baseUrl),
-            expect(this.page).toHaveTitle("Spendflo"),
-            expect(this.page.locator(`//h4[text()="My Tasks"]`)).toBeVisible(),
-            expect(this.page.locator(`//h4[text()="Comments Feed"]`)).toBeVisible(),
-            expect(this.page.locator(`//h4[text()="My Requests"]`)).toBeVisible(),
-            expect(this.page.locator(`//h4[text()="Upcoming Renewals"]`)).toBeVisible()
+            expect(this.page).toHaveTitle('Spendflo'),
+            expect(this.myTasksHeader).toBeVisible(),
+            expect(this.commentsFeedHeader).toBeVisible(),
+            expect(this.myRequestsHeader).toBeVisible(),
+            expect(this.upcomingRenewalsHeader).toBeVisible(),
         ]);
     }
 
