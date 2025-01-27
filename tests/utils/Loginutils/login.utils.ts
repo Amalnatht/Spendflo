@@ -5,10 +5,8 @@ export class LoginUtils {
 
     async loginAsSuperadmin(email: string, password: string, orgname: string) :Promise<boolean> {
         try {
-            await this.loginpage.NavigatetoSpendflo();
-            await this.loginpage.enterEmailandContinue(email);
-            await this.loginpage.enterPasswordandSigin(password);
-            await this.loginpage.checkforskipfornowbuttonandclick();
+            // Updated to use the new navigateAndLogin method
+            await this.loginpage.navigateAndLogin(email, password);
             await this.loginpage.loginsuccessful();
             await this.loginpage.checkforpendoGuideandClose();
             await this.loginpage.fetchTheOrgnamefromNavBar();
@@ -23,10 +21,8 @@ export class LoginUtils {
 
     async loginAsUser(email: string, password: string):Promise<boolean> {
         try {
-            await this.loginpage.NavigatetoSpendflo();
-            await this.loginpage.enterEmailandContinue(email);
-            await this.loginpage.enterPasswordandSigin(password);
-            await this.loginpage.checkforskipfornowbuttonandclick();
+            // Updated to use the new navigateAndLogin method
+            await this.loginpage.navigateAndLogin(email, password);
             await this.loginpage.loginsuccessful();
             await this.loginpage.checkforpendoGuideandClose();
             return true;
