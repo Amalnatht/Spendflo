@@ -26,10 +26,16 @@ export async function logTestExecutionData(testName: string, duration: number, s
   // Function to handle test execution
 export async function handleTestExecution(testName: string, testFunction: () => Promise<boolean>) {
     const startTime = Date.now();
-    const success = await testFunction();
+    let success = false;
+    try{
+      success = await testFunction();
+    }
+    catch(e){
+      console.log(`Test failed with error: ${e}`);
+    }
     const duration = (Date.now() - startTime) / 1000;
     const status = success ? 'Pass' : 'Fail';
-    return await logTestExecutionData(testName, duration, status);
+    await logTestExecutionData(testName, duration, status);
     }
 
   export function getFormattedDateTime() {
