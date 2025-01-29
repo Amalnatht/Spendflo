@@ -5,6 +5,8 @@ import { AgreementCreationPage } from "../../Pages/agreements.page";
 import { LoginUtils } from "../../utils/Loginutils/login.utils";
 import * as usersData from "../../../Data/login.data.json";
 import { Users } from "../../../Data/login.data.interface";
+import { getEnvironmentUrl } from "../../utils/environment.utils";
+
 
 setDefaultTimeout(60 * 5000);
 
@@ -21,15 +23,22 @@ Before(async function () {
   browser = await chromium.launch({ headless: false });
   const context = await browser.newContext();
   page = await context.newPage();
-  loginPage = new LoginPage(page);
-  loginUtils = new LoginUtils(loginPage);
   agreementCreation = new AgreementCreationPage(page);
 });
 
-Given("User {string} logs in",  async function(user : string){
+// Given("User {string} logs in",  async function(user : string){
+//   const userDetails = users[user];
+//   await loginUtils.loginAsUser(userDetails.email,userDetails.password)
+// })
+
+Given("User {string} logs in to {string} org in {string}",  async function(user : string , org : string, env:string){
   const userDetails = users[user];
+  const url = getEnvironmentUrl(env);
+  loginPage = new LoginPage(page, url);
+  loginUtils = new LoginUtils(loginPage);
   await loginUtils.loginAsUser(userDetails.email,userDetails.password)
 })
+
 
 Then("User navigates to Agreements page",async function()
 {
