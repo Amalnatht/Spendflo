@@ -24,6 +24,12 @@ jobs:
       - name: Install Dependencies
         run: npm install  # Installs project dependencies
 
+      - name: Install Playwright Browsers
+        run: npx playwright install  # Installs Playwright browsers (Chromium, Firefox, Webkit)
+
+      - name: Compile TypeScript
+        run: npx tsc
+        
       - name: Run Tests
         run: npm test  # Runs tests (if defined in your project)
         
