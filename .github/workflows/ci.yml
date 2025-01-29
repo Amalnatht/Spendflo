@@ -27,11 +27,19 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install  # Installs Playwright browsers (Chromium, Firefox, Webkit)
 
+      # - name: Load environment variables
+      #   run: |
+      #     npm install dotenv  # Install dotenv (if not installed yet)
+      #     node -e 'require("dotenv").config();'  # Load the .env file
+
       - name: Compile TypeScript
         run: npx tsc
         
+        
       - name: Run Tests
         run: npm test  # Runs tests (if defined in your project)
+        env:
+          PROD_URL: ${{ secrets.PROD_URL }}  # Use the secret for your environment URL
         
   version-bump:
     needs: build-and-test  # Ensures version bump happens only after tests pass
