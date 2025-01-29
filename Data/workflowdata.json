@@ -1,0 +1,179 @@
+{
+  "managerApprovalTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Dropdown Question",
+    "typeoftask": "Approval",
+    "userrole": "Manager",
+    "taskname": "bymps",
+    "additonalQuestion": "empty"
+  },
+  "managerCompletionTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Short Text Question",
+    "typeoftask": "Completion",
+    "userrole": "Manager",
+    "taskname": "uezda",
+    "additonalQuestion": "empty"
+  },
+  "teamOwnerApprovalTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Currency Question",
+    "typeoftask": "Approval",
+    "userrole": "Team owner",
+    "taskname": "rqfqz",
+    "additonalQuestion": "empty"
+  },
+  "teamOwnerCompletionTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Date Question",
+    "typeoftask": "Completion",
+    "userrole": "Team owner",
+    "taskname": "aggqg",
+    "additonalQuestion": "empty"
+  },
+  "csmApprovalTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Attachment Question",
+    "typeoftask": "Approval",
+    "userrole": "CSM",
+    "taskname": "lxwse",
+    "additonalQuestion": "empty"
+  },
+  "csmCompletionTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "User select Question",
+    "typeoftask": "Completion",
+    "userrole": "CSM",
+    "taskname": "uljdl",
+    "additonalQuestion": "empty"
+  },
+  "selectedUserApprovalTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Multiple Choice Question",
+    "typeoftask": "Approval",
+    "userrole": "Selfserve user 2",
+    "taskname": "dasfb",
+    "additonalQuestion": "empty"
+  },
+  "selectedUserCompletionTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Multiple Choice Question",
+    "typeoftask": "Completion",
+    "userrole": "Selfserve user 2",
+    "taskname": "ytxhn",
+    "additonalQuestion": "empty"
+  },
+  "emApprovalTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Date Question",
+    "typeoftask": "Approval",
+    "userrole": "EM",
+    "taskname": "hxmrr",
+    "additonalQuestion": "empty"
+  },
+  "emCompletionTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Single Choice Question",
+    "typeoftask": "Completion",
+    "userrole": "EM",
+    "taskname": "yqvze",
+    "additonalQuestion": "empty"
+  },
+  "requesterApprovalTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Multiple Choice Question",
+    "typeoftask": "Approval",
+    "userrole": "Requester",
+    "taskname": "gwzjt",
+    "additonalQuestion": "empty"
+  },
+  "requesterCompletionTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Single Choice Question",
+    "typeoftask": "Completion",
+    "userrole": "Requester",
+    "taskname": "vzagf",
+    "additonalQuestion": "empty"
+  },
+  "withoutFormTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "No question",
+    "typeoftask": "Completion",
+    "userrole": "Selfserve user 2",
+    "taskname": "qjzef",
+    "additonalQuestion": "empty"
+  },
+  "withoutChecklistTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "User select Question",
+    "typeoftask": "Completion",
+    "userrole": "Selfserve user 2",
+    "taskname": "mpuin",
+    "additonalQuestion": "empty"
+  },
+  "intakeTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Date Question",
+    "typeoftask": "Completion",
+    "userrole": "Requester",
+    "taskname": "Intake Form",
+    "additonalQuestion": "Vendor question"
+  },
+  "postIntakeTaskDetails": {
+    "page": {
+      "_type": "Page",
+      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
+    },
+    "question": "Dropdown Question",
+    "typeoftask": "Completion",
+    "userrole": "CSM",
+    "taskname": "Post Intake",
+    "additonalQuestion": "empty"
+  },
+  "workflowName": "ulqhi"
+}
