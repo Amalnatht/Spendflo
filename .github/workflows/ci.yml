@@ -40,6 +40,7 @@ jobs:
         run: npm test  # Runs tests (if defined in your project)
         env:
           PROD_URL: ${{ secrets.PROD_URL }}  # Use the secret for your environment URL
+          TEST_URL: ${{ secrets.TEST_URL }}  # Use the secret for your environment URL
         
   version-bump:
     needs: build-and-test  # Ensures version bump happens only after tests pass
