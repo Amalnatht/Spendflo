@@ -62,7 +62,7 @@ jobs:
 
       - name: Bump Version
         run: |
-          npm version patch -m "chore(release): bump version to %s"
+          git commit -m "chore: bump version [skip ci]" || echo "No changes to commit"
           git add package.json package-lock.json
           git commit -m "chore: bump version [skip ci]"
           git push
