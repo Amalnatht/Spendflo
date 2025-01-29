@@ -1,0 +1,115 @@
+{
+  "managerApprovalTaskDetails": {
+    "question": "Long Text Question",
+    "typeoftask": "Approval",
+    "userrole": "Manager",
+    "taskname": "jalza",
+    "additonalQuestion": "empty"
+  },
+  "managerCompletionTaskDetails": {
+    "question": "Multiple Choice Question",
+    "typeoftask": "Completion",
+    "userrole": "Manager",
+    "taskname": "jwvpw",
+    "additonalQuestion": "empty"
+  },
+  "teamOwnerApprovalTaskDetails": {
+    "question": "Currency Question",
+    "typeoftask": "Approval",
+    "userrole": "Team owner",
+    "taskname": "xtkbl",
+    "additonalQuestion": "empty"
+  },
+  "teamOwnerCompletionTaskDetails": {
+    "question": "Short Text Question",
+    "typeoftask": "Completion",
+    "userrole": "Team owner",
+    "taskname": "fmatz",
+    "additonalQuestion": "empty"
+  },
+  "csmApprovalTaskDetails": {
+    "question": "Multiple Choice Question",
+    "typeoftask": "Approval",
+    "userrole": "CSM",
+    "taskname": "wedha",
+    "additonalQuestion": "empty"
+  },
+  "csmCompletionTaskDetails": {
+    "question": "Currency Question",
+    "typeoftask": "Completion",
+    "userrole": "CSM",
+    "taskname": "rplgt",
+    "additonalQuestion": "empty"
+  },
+  "selectedUserApprovalTaskDetails": {
+    "question": "Multiple Choice Question",
+    "typeoftask": "Approval",
+    "userrole": "Selfserve user 2",
+    "taskname": "qmoyi",
+    "additonalQuestion": "empty"
+  },
+  "selectedUserCompletionTaskDetails": {
+    "question": "Date Question",
+    "typeoftask": "Completion",
+    "userrole": "Selfserve user 2",
+    "taskname": "vqihv",
+    "additonalQuestion": "empty"
+  },
+  "emApprovalTaskDetails": {
+    "question": "Multiple Choice Question",
+    "typeoftask": "Approval",
+    "userrole": "EM",
+    "taskname": "ldkgm",
+    "additonalQuestion": "empty"
+  },
+  "emCompletionTaskDetails": {
+    "question": "Dropdown Question",
+    "typeoftask": "Completion",
+    "userrole": "EM",
+    "taskname": "opetf",
+    "additonalQuestion": "empty"
+  },
+  "requesterApprovalTaskDetails": {
+    "question": "Single Choice Question",
+    "typeoftask": "Approval",
+    "userrole": "Requester",
+    "taskname": "jrvpi",
+    "additonalQuestion": "empty"
+  },
+  "requesterCompletionTaskDetails": {
+    "question": "Multiple Choice Question",
+    "typeoftask": "Completion",
+    "userrole": "Requester",
+    "taskname": "hiezc",
+    "additonalQuestion": "empty"
+  },
+  "withoutFormTaskDetails": {
+    "question": "No question",
+    "typeoftask": "Completion",
+    "userrole": "Selfserve user 2",
+    "taskname": "asiyc",
+    "additonalQuestion": "empty"
+  },
+  "withoutChecklistTaskDetails": {
+    "question": "Short Text Question",
+    "typeoftask": "Completion",
+    "userrole": "Selfserve user 2",
+    "taskname": "mkhrt",
+    "additonalQuestion": "empty"
+  },
+  "intakeTaskDetails": {
+    "question": "Short Text Question",
+    "typeoftask": "Completion",
+    "userrole": "Requester",
+    "taskname": "Intake Form",
+    "additonalQuestion": "Vendor question"
+  },
+  "postIntakeTaskDetails": {
+    "question": "Single Choice Question",
+    "typeoftask": "Completion",
+    "userrole": "CSM",
+    "taskname": "Post Intake",
+    "additonalQuestion": "empty"
+  },
+  "workflowName": "iqdbc"
+}
