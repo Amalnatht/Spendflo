@@ -26,3 +26,25 @@ jobs:
 
       - name: Run Tests
         run: npm test  # Runs tests (if defined in your project)
+        
+  version-bump:
+    needs: build-and-test  # Ensures version bump happens only after tests pass
+    runs-on: ubuntu-latest  # Runs on the latest Ubuntu server
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Fetches your repo so the workflow can modify it
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Bump Version
+        run: |
+          npm version patch -m "chore(release): bump version to %s"
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add package.json package-lock.json
+          git commit -m "chore: bump version [skip ci]"
+          git push
