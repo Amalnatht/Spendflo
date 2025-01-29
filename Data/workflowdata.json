@@ -1,179 +1,115 @@
 {
   "managerApprovalTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "Dropdown Question",
+    "question": "Date Question",
     "typeoftask": "Approval",
     "userrole": "Manager",
-    "taskname": "bymps",
+    "taskname": "vgyym",
     "additonalQuestion": "empty"
   },
   "managerCompletionTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "Short Text Question",
+    "question": "Dropdown Question",
     "typeoftask": "Completion",
     "userrole": "Manager",
-    "taskname": "uezda",
+    "taskname": "qbout",
     "additonalQuestion": "empty"
   },
   "teamOwnerApprovalTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
     "question": "Currency Question",
     "typeoftask": "Approval",
     "userrole": "Team owner",
-    "taskname": "rqfqz",
+    "taskname": "uwmvo",
     "additonalQuestion": "empty"
   },
   "teamOwnerCompletionTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "Date Question",
+    "question": "Currency Question",
     "typeoftask": "Completion",
     "userrole": "Team owner",
-    "taskname": "aggqg",
+    "taskname": "ukhwd",
     "additonalQuestion": "empty"
   },
   "csmApprovalTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "Attachment Question",
+    "question": "Date Question",
     "typeoftask": "Approval",
     "userrole": "CSM",
-    "taskname": "lxwse",
+    "taskname": "jnkto",
     "additonalQuestion": "empty"
   },
   "csmCompletionTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "User select Question",
+    "question": "Multiple Choice Question",
     "typeoftask": "Completion",
     "userrole": "CSM",
-    "taskname": "uljdl",
+    "taskname": "rfagw",
     "additonalQuestion": "empty"
   },
   "selectedUserApprovalTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "Multiple Choice Question",
+    "question": "Currency Question",
     "typeoftask": "Approval",
     "userrole": "Selfserve user 2",
-    "taskname": "dasfb",
+    "taskname": "pasrr",
     "additonalQuestion": "empty"
   },
   "selectedUserCompletionTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
     "question": "Multiple Choice Question",
     "typeoftask": "Completion",
     "userrole": "Selfserve user 2",
-    "taskname": "ytxhn",
+    "taskname": "ctzev",
     "additonalQuestion": "empty"
   },
   "emApprovalTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "Date Question",
+    "question": "Long Text Question",
     "typeoftask": "Approval",
     "userrole": "EM",
-    "taskname": "hxmrr",
+    "taskname": "yrlxs",
     "additonalQuestion": "empty"
   },
   "emCompletionTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "Single Choice Question",
+    "question": "Date Question",
     "typeoftask": "Completion",
     "userrole": "EM",
-    "taskname": "yqvze",
+    "taskname": "zcpdd",
     "additonalQuestion": "empty"
   },
   "requesterApprovalTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "Multiple Choice Question",
+    "question": "Attachment Question",
     "typeoftask": "Approval",
     "userrole": "Requester",
-    "taskname": "gwzjt",
+    "taskname": "vciua",
     "additonalQuestion": "empty"
   },
   "requesterCompletionTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "Single Choice Question",
+    "question": "Date Question",
     "typeoftask": "Completion",
     "userrole": "Requester",
-    "taskname": "vzagf",
+    "taskname": "yvocz",
     "additonalQuestion": "empty"
   },
   "withoutFormTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
     "question": "No question",
     "typeoftask": "Completion",
     "userrole": "Selfserve user 2",
-    "taskname": "qjzef",
+    "taskname": "xgauu",
     "additonalQuestion": "empty"
   },
   "withoutChecklistTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "User select Question",
+    "question": "Currency Question",
     "typeoftask": "Completion",
     "userrole": "Selfserve user 2",
-    "taskname": "mpuin",
+    "taskname": "eeeyr",
     "additonalQuestion": "empty"
   },
   "intakeTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "Date Question",
+    "question": "Long Text Question",
     "typeoftask": "Completion",
     "userrole": "Requester",
     "taskname": "Intake Form",
     "additonalQuestion": "Vendor question"
   },
   "postIntakeTaskDetails": {
-    "page": {
-      "_type": "Page",
-      "_guid": "page@5b7402d8ff6465da260493e01beffac9"
-    },
-    "question": "Dropdown Question",
+    "question": "Number Question",
     "typeoftask": "Completion",
     "userrole": "CSM",
     "taskname": "Post Intake",
     "additonalQuestion": "empty"
   },
-  "workflowName": "ulqhi"
+  "workflowName": "vxmin"
 }

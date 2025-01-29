@@ -1,7 +1,6 @@
 import { Page, Locator, expect, Response } from '@playwright/test';
 import {generateRandomText , draganddrop } from "../utils/general.utils";
-import { promises } from 'dns';
-import { StringLiteral } from 'typescript';
+
 
 
 export class WorkflowPageAndStudio {
