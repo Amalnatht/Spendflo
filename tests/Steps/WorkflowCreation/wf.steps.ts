@@ -274,7 +274,7 @@ Then("User publishes the workflow",async function(){
   
   }
   // Write the combined object to a JSON file
-fs.writeFileSync('C:/Users/amaln/Desktop/Spendflo/Data/workflowdata.json', JSON.stringify(Information, null, 2), 'utf-8');
+fs.writeFileSync('Data/workflowdata.json', JSON.stringify(Information, null, 2), 'utf-8');
 })
 
 After(async function () {

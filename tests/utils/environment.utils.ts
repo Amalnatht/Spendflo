@@ -8,9 +8,9 @@ export function getEnvironmentUrl(env: string): string {
     if (!prodUrl || !testUrl) {
         throw new Error("missing required environment variables and please check your .env file")
     }
-    if (env.toLowerCase() === "Production env") 
+    if (env.toLowerCase() === "production env") 
         return prodUrl;
-    else if (env.toLowerCase()==='Test env')
+    else if (env.toLowerCase()==='test env')
             return testUrl;
     else
             return testUrl; //default navigation if the input doesn't match
