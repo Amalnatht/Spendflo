@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js",
-    "testcase":"npx cucumber-js --require-module ts-node/register"
+    "testcase": "npx cucumber-js --require-module ts-node/register"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
     "ts-node": "^10.9.2"
   }
 }

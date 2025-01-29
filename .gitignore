@@ -1,7 +1,13 @@
-
-# Playwright
+# Ignore node_modules directory in any location
 node_modules/
+
+# Ignore test results directory only in the root
 /test-results/
+
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+.env
+dist/
+coverage/
+.DS_Store
