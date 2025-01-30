@@ -1,0 +1,33 @@
+name: Scheduled Run for Automation Tests
+
+on:
+  schedule:
+    - cron: '45 15 * * *'  # Runs at midnight UTC every day
+
+jobs:
+  run-automation-tests:
+    runs-on: ubuntu-latest  # The OS for the job
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Checks out your repo so the workflow can access the files
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v3  # Sets up Node.js environment
+        with:
+          node-version: 18  # Specify the version of Node.js you want to use
+
+      - name: Install Dependencies
+        run: npm install  # Installs the project dependencies
+
+      - name: Install Playwright Browsers
+        run: npx playwright install  # Installs Playwright browsers (Chromium, Firefox, Webkit)
+
+      - name: Compile TypeScript
+        run: npx tsc  # Compiles TypeScript code (if you’re using TypeScript)
+
+      - name: Run Tests (Playwright + Cucumber)
+        run: npm test  # Runs your tests (make sure this is defined in your package.json)
+        env:
+          PROD_URL: ${{ secrets.PROD_URL }}  # Use the secret for production URL
+          TEST_URL: ${{ secrets.TEST_URL }}  # Use the secret for test environment URL
