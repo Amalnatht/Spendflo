@@ -19,7 +19,7 @@ jobs:
       - name: Set Up Node.js
         uses: actions/setup-node@v3  # Sets up Node.js environment
         with:
-          node-version: 18.16.1
+          node-version: "lts"
 
       - name: Install Dependencies
         run: npm install  # Installs project dependencies
