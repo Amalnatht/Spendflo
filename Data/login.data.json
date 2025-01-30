@@ -5,6 +5,12 @@
             "role":"Superadmin"
         },
 
+        "Ganesh Aravind" : {
+            "email" : "ganesh.aravind@spendflo.com",
+            "password": "Spen*011",
+            "role":"Superadmin"
+        },
+
         "selfserveuser1": {
             "email":"selfserve-user1@dev-testing.spendflo.io",
             "password":"Test@123",
