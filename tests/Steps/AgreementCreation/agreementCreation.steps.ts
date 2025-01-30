@@ -47,7 +47,7 @@ Then("User navigates to Agreements page",async function()
 
 Then ("User selects Others-Contract option for contract creation",async function()
 {
-    await agreementCreation.chooseAgreementType();
+    await agreementCreation.chooseAgreementType("Contract", "Others");
     await page.getByText("Add agreement manually").click();
 })
 

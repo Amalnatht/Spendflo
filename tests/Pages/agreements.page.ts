@@ -1,5 +1,5 @@
 import { Page, Locator, expect, Response } from '@playwright/test';
-import { generateRandomText,dates } from '../utils/Loginutils/agreements.utils';
+import { generateRandomText,dates } from '../utils/agreements.utils';
 
 export class AgreementCreationPage {
     page: Page;
@@ -9,6 +9,8 @@ export class AgreementCreationPage {
     private navBaragreementsTab: Locator;
     private addAgreementButton: Locator;
     private othersOption: Locator;
+    private subscriptionOption: Locator;
+    private contractOption: Locator;
 
     // Uploading Document for Contract Creation
     private fileInput: Locator;
@@ -84,6 +86,8 @@ export class AgreementCreationPage {
         this.navBaragreementsTab = page.locator("//h5[text()='Agreements']");
         this.addAgreementButton = page.locator("//p[text()='+ Add Agreement']");
         this.othersOption= page.locator("//span[text()='Others']");
+        this.subscriptionOption= page.locator("//span[text()='Subscription']");
+        this.contractOption= page.locator("//span[text()='Contract']");
 
         // Uploading Document for Contract Creation
         this.fileInput = page.locator("input[type='file']");
@@ -157,10 +161,24 @@ export class AgreementCreationPage {
 
     }
 
-    async chooseAgreementType():Promise<void>{
+
+    async chooseAgreementType(agreementType:string,agreementCategory:string):Promise<void>{
         await this.addAgreementButton.click()
+        if(agreementType=="Contract" && agreementCategory=="Others"){
         await this.othersOption.click();
+        }
+        else if(agreementType=="Subscription" && agreementCategory=="Others"){
+            await this.othersOption.click();
+            await this.subscriptionOption.click();
+        }
+        else if(agreementType=="Subscription" && agreementCategory=="Software"){
+            await this.subscriptionOption.click();
+        }
+        else{
+            await this.contractOption.click();
+        }
     }
+    
 
     async enterVendorDetails():Promise<void>{
         await this.vendorNameInput.fill(generateRandomText(5));

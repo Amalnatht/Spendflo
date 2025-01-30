@@ -1,7 +1,7 @@
 {
     "default": {
-      "paths": ["tests/Features/**/agreements.feature"],
-      "require": ["tests/Steps/**/agreementCreation.steps.ts"],
+      "paths": ["tests/Features/**/wf.feature"],
+      "require": ["tests/Steps/**/wf.steps.ts"],
       "dryRun": false,
       "requireModule": ["ts-node/register"],
       "formatOptions": {
