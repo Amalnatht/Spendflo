@@ -1,0 +1,44 @@
+name: CI Pipeline  # Name of the workflow
+
+on:
+  push:
+    branches:
+      - main  # Runs when code is pushed to the main branch
+  pull_request:
+    branches:
+      - main  # Runs when a PR is opened to main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest  # The OS the job will run on
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Checks out your repo so the workflow can access the files
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v3  # Sets up Node.js environment
+        with:
+          node-version: 18.16.1
+
+      - name: Install Dependencies
+        run: npm install  # Installs project dependencies
+
+      - name: Install Playwright Browsers
+        run: npx playwright install  # Installs Playwright browsers (Chromium, Firefox, Webkit)
+
+      # - name: Load environment variables
+      #   run: |
+      #     npm install dotenv  # Install dotenv (if not installed yet)
+      #     node -e 'require("dotenv").config();'  # Load the .env file
+
+      - name: Compile TypeScript
+        run: npx tsc
+        
+        
+      - name: Run Tests
+        run: npm test  # Runs tests (if defined in your project)
+        env:
+          PROD_URL: ${{ secrets.PROD_URL }}  # Use the secret for your environment URL
+          TEST_URL: ${{ secrets.TEST_URL }}  # Use the secret for your environment URL
+        
