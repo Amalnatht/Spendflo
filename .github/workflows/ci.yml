@@ -42,27 +42,3 @@ jobs:
           PROD_URL: ${{ secrets.PROD_URL }}  # Use the secret for your environment URL
           TEST_URL: ${{ secrets.TEST_URL }}  # Use the secret for your environment URL
         
-  version-bump:
-    needs: build-and-test  # Ensures version bump happens only after tests pass
-    runs-on: ubuntu-latest  # Runs on the latest Ubuntu server
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3  # Fetches your repo so the workflow can modify it
-
-      - name: Set Up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.16.1
-
-      - name: Configure Git User
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-
-      - name: Bump Version
-        run: |
-          git commit -m "chore: bump version [skip ci]" || echo "No changes to commit"
-          git add package.json package-lock.json
-          git commit -m "chore: bump version [skip ci]"
-          git push
