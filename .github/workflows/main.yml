@@ -2,7 +2,7 @@ name: Scheduled Run for Automation Tests
 
 on:
   schedule:
-    - cron: '45 15 * * *'  # Runs at midnight UTC every day
+    - cron: '31 10 * * *'  # Runs at midnight UTC every day
 
 jobs:
   run-automation-tests:
