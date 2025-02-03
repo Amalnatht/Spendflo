@@ -43,7 +43,7 @@ jobs:
           TEST_URL: ${{ secrets.TEST_URL }}  # Use the secret for your environment URL
 
       - name: Upload Cucumber report as artifact
-        uses: github-actions/artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: cucumber-report
           path: reports/cucumber_report.html
