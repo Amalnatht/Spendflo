@@ -10,4 +10,5 @@ node_modules/
 .env
 dist/
 coverage/
-.DS_Store
+.DS_Storegit
+/reports/
