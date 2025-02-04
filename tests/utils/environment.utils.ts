@@ -2,16 +2,16 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export function getEnvironmentUrl(env: string): string {
-    const prodUrl = process.env.PROD_URL;
-    const testUrl = process.env.TEST_URL;
+    const { PROD_URL, TEST_URL } = process.env;
 
-    if (!prodUrl || !testUrl) {
+    if (!PROD_URL || !TEST_URL) {
         throw new Error("missing required environment variables and please check your .env file")
     }
-    if (env.toLowerCase() === "production env") 
-        return prodUrl;
-    else if (env.toLowerCase()==='test env')
-            return testUrl;
+    const environment = env.toLowerCase().trim()
+    if (environment === "production") 
+        return PROD_URL;
+    else if (environment ==='test')
+            return TEST_URL;
     else
-            return testUrl; //default navigation if the input doesn't match
+            return TEST_URL; //default navigation if the input doesn't match
 } 
