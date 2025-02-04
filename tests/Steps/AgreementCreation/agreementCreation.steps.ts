@@ -6,6 +6,7 @@ import { LoginUtils } from "../../utils/Loginutils/login.utils";
 import * as usersData from "../../../Data/login.data.json";
 import { Users } from "../../../Data/login.data.interface";
 import { getEnvironmentUrl } from "../../utils/environment.utils";
+import fs from 'fs';
 
 
 setDefaultTimeout(60 * 5000);
@@ -74,10 +75,23 @@ Then("User saves the Agreement",async function()
     return agreementCreation.saveAgreementDetails();
 })
 
-After(async function () {
-  const videoPath = await page.video()?.path();
-  if (videoPath) {
-    console.log(`Video saved at: ${videoPath}`);
+After(async function (this: any) {
+  if (page) {
+    const videoPath = await page.video()?.path();
+    if (videoPath) {
+      console.log(`Video saved at: ${videoPath}`);
+
+      // Read video file as a buffer
+      const videoBuffer = fs.readFileSync(videoPath);
+
+      // Attach the video buffer to the Cucumber report
+      this.attach(videoBuffer, 'video/webm');
+    }
+
+    await page.close();
   }
-  await browser.close();
+
+  if (browser) {
+    await browser.close();
+  }
 });
