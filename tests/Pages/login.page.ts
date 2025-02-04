@@ -12,6 +12,7 @@ export class LoginPage {
     private orgNameLocatorFromNavbar: Locator;
     private orgName: string | null;
     private orgSearch: Locator;
+    private orgToBeSwitchedTo : string;
 
     // Header locators for assertions
     private myTasksHeader: Locator;
@@ -36,84 +37,104 @@ export class LoginPage {
         this.commentsFeedHeader = page.locator('//h4[text()="Comments Feed"]');
         this.myRequestsHeader = page.locator('//h4[text()="My Requests"]');
         this.upcomingRenewalsHeader = page.locator('//h4[text()="Upcoming Renewals"]');
+
+        this.orgToBeSwitchedTo="";
     }
 
-    /**
-     * Combined method: Navigate to Spendflo, login, and handle "Skip for now" button
-     */
-    async navigateAndLogin(email: string, password: string): Promise<void> {
-        // Navigate to the base URL
-        await this.page.goto(this.baseUrl);
+    async getPage():Promise <Page>{
+        return this.page;
+    }
 
-        // Fill in email and press Enter
+    async addWaitforThePage(milliseconds : number){
+        return this.page.waitForTimeout(milliseconds)
+    }
+    
+    async waitForPageToLoad(){
+        return (await this.getPage()).waitForLoadState("domcontentloaded");
+    }
+
+    async navigateToSpendflo():Promise<Response | null>{
+        return this.page.goto(this.baseUrl);
+    }
+
+    async enterEmailAndContinue(email:string){
         await this.emailField.fill(email);
         await this.emailField.press("Enter");
+    }
 
-        // Fill in password and click "Sign in"
+    async enterPasswordandSignin(password:string){
         await this.passwordField.fill(password);
         await this.siginButton.click();
+    }
 
-        // Check and click "Skip for now" button if visible
-        await this.page.waitForLoadState();
-        try {
-            await this.skipforNowButton.waitFor({ state: 'visible', timeout: 10000 });
-            await this.skipforNowButton.click();
-        } catch (error) {
-            // Gracefully handle if the button is not found
-            return;
+    async clickOnskipForNowButton():Promise <void>{
+        await this.skipforNowButton.waitFor({ state: 'visible', timeout: 10000 });
+        return this.skipforNowButton.click();
+    }
+
+    async clickOnpendoGuideCloseButton():Promise <void>{
+        await this.pendoguideCloseButton.waitFor({ state: 'visible', timeout: 10000 });
+        return this.pendoguideCloseButton.click();
+    }
+
+
+    async checkIforgNameisdisplayed():Promise<boolean>{
+        return await this.orgNameLocatorFromNavbar.count() > 0
+    }
+
+    async fetchTheOrgNameFromNavBar(): Promise<string | null>{
+        return this.orgNameLocatorFromNavbar.textContent();
+    }
+
+    async assignValuetothisOrgvariable(){
+        this.orgName = await this.fetchTheOrgNameFromNavBar();
+    }
+
+    async clickOnOrgNameBoxFromTheNavbar(){
+        return this.orgNameLocatorFromNavbar.click();
+    }
+
+    async fillTheOrgTobeSwithcedtoFromNavbar(orgtobeswitchedto:string){
+       this.orgToBeSwitchedTo = orgtobeswitchedto;
+       return this.orgSearch.fill(orgtobeswitchedto);
+    }
+
+    async clickOnTheOrgTobeSwitchedToFromNavbar(){
+       return this.page.locator(`//button/p[text()='${this.orgToBeSwitchedTo}']`).click();
+
+    }
+
+    async getOrgNameValue():Promise<string | null>{
+       return this.orgName
+    }
+    
+    getEnv(){
+        if(this.baseUrl.includes("app")){
+            return "app"
+        }
+        else{
+            return "test"
         }
     }
 
-    async checkforpendoGuideandClose(): Promise<void> {
-        await this.page.waitForLoadState('domcontentloaded');
-        try {
-            await this.pendoguideCloseButton.waitFor({ state: 'visible', timeout: 10000 });
-            await this.pendoguideCloseButton.click();
-        } catch (error) {
-            return;
-        }
+    getBaseUrl(){
+        return this.baseUrl;
     }
 
-    async fetchTheOrgnamefromNavBar(): Promise<boolean> {
-        try {
-            if (await this.orgNameLocatorFromNavbar.count() > 0) {
-                await this.page.waitForTimeout(5000);
-                this.orgName = await this.orgNameLocatorFromNavbar.textContent();
-                return true;
-            }
-        } catch (error) {
-            console.log("Orgname not visible in the navbar", error);
-        }
-        return false;
+    getTaskHeader(){
+        return this.myTasksHeader;
     }
 
-    async switchToDesiredorg(orgtobeswitchedto: string): Promise<void> {
-        if (this.orgName !== "Spendfloone" && this.orgName !== "test-org") {
-            await this.orgNameLocatorFromNavbar.click();
-            await this.orgSearch.fill(orgtobeswitchedto);
-            await this.page.locator(`//button/p[text()='${orgtobeswitchedto}']`).click();
-
-            await this.page.waitForTimeout(4000);
-            this.orgName = await this.orgNameLocatorFromNavbar.textContent();
-            while (!this.orgName) {
-                await this.page.waitForTimeout(500);
-                this.orgName = await this.orgNameLocatorFromNavbar.textContent();
-            }
-
-            if (this.orgName !== orgtobeswitchedto) {
-                throw new Error("Organization switch Failed");
-            }
-        }
+    getCommentsFeedHeader(){
+        return this.commentsFeedHeader
+    }
+    
+    getMyRequestHeader(){
+        return this.myRequestsHeader;
     }
 
-    async loginsuccessful(): Promise<void> {
-        await Promise.all([
-            expect(this.page).toHaveURL(this.baseUrl),
-            expect(this.page).toHaveTitle('Spendflo'),
-            expect(this.myTasksHeader).toBeVisible(),
-            expect(this.commentsFeedHeader).toBeVisible(),
-            expect(this.myRequestsHeader).toBeVisible(),
-            expect(this.upcomingRenewalsHeader).toBeVisible(),
-        ]);
+    getUpcomingRenewalsHeader(){
+        return this.upcomingRenewalsHeader;
     }
+
 }
