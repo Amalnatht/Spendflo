@@ -42,7 +42,7 @@ export class LoginUtils {
         // Check and click "Skip for now" button if visible
         await this.loginpage.waitForPageToLoad();
         try {
-            this.loginpage.clickOnskipForNowButton();
+            await this.loginpage.clickOnskipForNowButton();
         } catch (error) {
             // Gracefully handle if the button is not found
             return;
@@ -54,7 +54,7 @@ export class LoginUtils {
     async checkforpendoGuideandClose(): Promise<void> {
         await this.loginpage.waitForPageToLoad();
         try {
-            this.loginpage.clickOnpendoGuideCloseButton();
+           await this.loginpage.clickOnpendoGuideCloseButton();
         } catch (error) {
             return;
         }

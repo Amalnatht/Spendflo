@@ -20,7 +20,7 @@ let loginUtils : LoginUtils;
 let agreementCreation : AgreementCreationPage;
 
 Before(async function () {
-  browser = await chromium.launch({ headless: true });
+  browser = await chromium.launch({ headless: false });
   const context = await browser.newContext();
   page = await context.newPage();
   agreementCreation = new AgreementCreationPage(page);
