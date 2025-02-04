@@ -21,7 +21,10 @@ let agreementCreation : AgreementCreationPage;
 
 Before(async function () {
   browser = await chromium.launch({ headless: true });
-  const context = await browser.newContext();
+   const context = await browser.newContext({
+    recordVideo: { dir: 'videos/' }, // Save videos in the "videos" directory
+  })
+  //const context = await browser.newContext();
   page = await context.newPage();
   agreementCreation = new AgreementCreationPage(page);
 });
@@ -72,5 +75,9 @@ Then("User saves the Agreement",async function()
 })
 
 After(async function () {
+  const videoPath = await page.video()?.path();
+  if (videoPath) {
+    console.log(`Video saved at: ${videoPath}`);
+  }
   await browser.close();
 });

@@ -15,7 +15,7 @@ const reportFilePath = path.join(reportsDir, reportFileName);
 
 const options: reporter.Options = {
   theme: "bootstrap",
-  jsonFile: "reports/cucumber-report.json",
+  jsonFile: "reports/cucumber_report.json",
   output: reportFilePath,
   reportSuiteAsScenarios: true,
   launchReport: true,  // Set to true if you want it to open in the browser automatically
