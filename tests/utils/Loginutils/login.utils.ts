@@ -6,6 +6,10 @@ export class LoginUtils {
         this.organization = "";
     }
 
+    async getUrl(){
+        console.log(await this.loginpage.getEnv());
+    }
+
 
     async loginAsSuperadmin(email: string, password: string, orgname: string) {
         try {
@@ -86,8 +90,9 @@ export class LoginUtils {
 
             await this.loginpage.addWaitforThePage(5000);
             this.organization = await this.loginpage.fetchTheOrgNameFromNavBar();
-            while (!this.loginpage.getOrgNameValue()) {
-                await this.loginpage.addWaitforThePage(5000);
+            await this.loginpage.assignValuetothisOrgvariable();
+            while (!await this.loginpage.getOrgNameValue()) {
+                await this.loginpage.addWaitforThePage(1000);
                 this.organization = await this.loginpage.fetchTheOrgNameFromNavBar();
             }
             if (await this.loginpage.getOrgNameValue() !== orgtobeswitchedto) {
@@ -97,14 +102,16 @@ export class LoginUtils {
 
         }
         else {
+
             await this.loginpage.clickOnOrgNameBoxFromTheNavbar();
             await this.loginpage.fillTheOrgTobeSwithcedtoFromNavbar(orgtobeswitchedto);
             await this.loginpage.clickOnTheOrgTobeSwitchedToFromNavbar();
 
             await this.loginpage.addWaitforThePage(5000);
             this.organization = await this.loginpage.fetchTheOrgNameFromNavBar();
-            while (!this.loginpage.getOrgNameValue()) {
-                await this.loginpage.addWaitforThePage(5000);
+            await this.loginpage.assignValuetothisOrgvariable();
+            while (!await this.loginpage.getOrgNameValue()) {
+                await this.loginpage.addWaitforThePage(1000);
                 this.organization = await this.loginpage.fetchTheOrgNameFromNavBar();
             }
             if (await this.loginpage.getOrgNameValue() !== orgtobeswitchedto) {

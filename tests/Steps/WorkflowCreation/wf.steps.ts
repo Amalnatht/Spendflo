@@ -63,7 +63,7 @@ let loginPage : LoginPage;
 let loginUtils : LoginUtils
 
 Before(async function () {
-  browser = await chromium.launch({ headless: true});
+  browser = await chromium.launch({ headless: false});
   const context = await browser.newContext();
   page = await context.newPage();
   settingsPage = new SettingsPage(page);
@@ -72,9 +72,11 @@ Before(async function () {
 
 Given("Superadmin {string} logs in to {string} and switches to {string} organization",  async function(user : string, env : string ,orgname : string){
     const url = getEnvironmentUrl(env);
+    console.log("urlasdfasfasfasf:   ",url);
     loginPage = new LoginPage(page, url);
     loginUtils = new LoginUtils(loginPage);
     const userDetails = users[user];
+    loginUtils.getUrl();
     await loginUtils.loginAsSuperadmin(userDetails.email,userDetails.password,orgname)
 })
 
