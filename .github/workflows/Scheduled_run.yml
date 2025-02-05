@@ -3,6 +3,7 @@ name: Scheduled Run for Automation Tests
 on:
   schedule:
     - cron: '0 0,6,12,14,18 * * *' 
+    - cron: '30 8 * * *' 
 
 jobs:
   run-automation-tests:
