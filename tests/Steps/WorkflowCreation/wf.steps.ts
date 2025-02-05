@@ -64,7 +64,9 @@ let loginUtils : LoginUtils
 
 Before(async function () {
   browser = await chromium.launch({ headless: true});
-  const context = await browser.newContext();
+  const context = await browser.newContext({
+    recordVideo: { dir: 'videos/' }, // Save videos in the "videos" directory
+  })
   page = await context.newPage();
   settingsPage = new SettingsPage(page);
   workflowPage = new WorkflowPageAndStudio(page);
@@ -72,11 +74,9 @@ Before(async function () {
 
 Given("Superadmin {string} logs in to {string} and switches to {string} organization",  async function(user : string, env : string ,orgname : string){
     const url = getEnvironmentUrl(env);
-    console.log("urlasdfasfasfasf:   ",url);
     loginPage = new LoginPage(page, url);
     loginUtils = new LoginUtils(loginPage);
     const userDetails = users[user];
-    loginUtils.getUrl();
     await loginUtils.loginAsSuperadmin(userDetails.email,userDetails.password,orgname)
 })
 
@@ -279,8 +279,25 @@ Then("User publishes the workflow",async function(){
 fs.writeFileSync('Data/workflowdata.json', JSON.stringify(Information, null, 2), 'utf-8');
 })
 
-After(async function () {
-  await browser.close();
+After(async function (this: any) {
+  if (page) {
+    const videoPath = await page.video()?.path();
+    if (videoPath) {
+      console.log(`Video saved at: ${videoPath}`);
+
+      // Read video file as a buffer
+      const videoBuffer = fs.readFileSync(videoPath);
+
+      // Attach the video buffer to the Cucumber report
+      this.attach(videoBuffer, 'video/webm');
+    }
+
+    await page.close();
+  }
+
+  if (browser) {
+    await browser.close();
+  }
 });
 
 
