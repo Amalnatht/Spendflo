@@ -2,7 +2,7 @@ name: Scheduled Run for Automation Tests
 
 on:
   schedule:
-    - cron: '33 11 * * *'  # Runs at midnight UTC every day
+    - cron: '0 0,6,12,14,18 * * *' 
 
 jobs:
   run-automation-tests:
@@ -31,3 +31,9 @@ jobs:
         env:
           PROD_URL: ${{ secrets.PROD_URL }}  # Use the secret for production URL
           TEST_URL: ${{ secrets.TEST_URL }}  # Use the secret for test environment URL
+
+      - name: Upload Cucumber report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report
+          path: reports/*.html
