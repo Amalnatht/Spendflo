@@ -96,7 +96,7 @@ export class WorkflowPageAndStudio {
         this.plusIconNextToCompletedPhase = page.locator("(//div[@id='2']//button)[1]");
         this.phaseNameInputField = page.locator("//input[@name='phaseName']");
         this.createPhaseButton = page.locator("//p[text()='Create Phase']/ancestor::button");
-        this.plusAddTaskButton =  page.locator("//p[text()='+ Add Task']/ancestor::button[1]");
+        this.plusAddTaskButton =  page.locator("//p[text()='Add Task']/ancestor::button[1]"); //made change over here
         this.addTaskButton = page.locator("//span[text()='Add Task']");
         this.taskNameInputField = page.getByPlaceholder('Enter task name');
         this.approvalRadioButton = page.locator("//span[text()='Approval']/ancestor::span");
