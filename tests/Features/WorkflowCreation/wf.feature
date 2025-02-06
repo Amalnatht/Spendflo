@@ -2,7 +2,7 @@ Feature: Workflow creation
 
 
 Scenario: User logs in navigates to wf page
-    Given Superadmin "Ganesh Aravind" logs in to "Production env" and switches to "test-org" organization
+    Given Superadmin "Ganesh Aravind" logs in to "production env" and switches to "test-org" organization
     Then User navigates to settings workflows page
     Then User creates a new Workflow and moves to Workflow Studio
     Then User fills in details to the intake task and completes it

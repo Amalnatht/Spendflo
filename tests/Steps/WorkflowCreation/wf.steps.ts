@@ -1,4 +1,4 @@
-import { Given, When, Then, Before, After, setDefaultTimeout, DataTable } from "@cucumber/cucumber";
+import { Given, When, Then, Before, After,AfterAll, setDefaultTimeout, DataTable } from "@cucumber/cucumber";
 import { chromium, Browser, Page, expect , Locator } from "@playwright/test";
 import { LoginPage } from "../../Pages/login.page";
 import { LoginUtils } from "../../utils/Loginutils/login.utils";
@@ -8,6 +8,7 @@ import { getEnvironmentUrl } from "../../utils/environment.utils";
 import { SettingsPage } from "../../Pages/settings.page";
 import { WorkflowPageAndStudio , Taskdetails} from "../../Pages/workflow.page";
 import fs from 'fs';
+import { exec } from "child_process";
 
 
 setDefaultTimeout(60 * 5000);
@@ -63,8 +64,10 @@ let loginPage : LoginPage;
 let loginUtils : LoginUtils
 
 Before(async function () {
-  browser = await chromium.launch({ headless: true});
-  const context = await browser.newContext();
+  browser = await chromium.launch({ headless: false });
+     const context = await browser.newContext({
+      recordVideo: { dir: 'videos/' }, // Save videos in the "videos" directory
+    })
   page = await context.newPage();
   settingsPage = new SettingsPage(page);
   workflowPage = new WorkflowPageAndStudio(page);
@@ -277,9 +280,38 @@ Then("User publishes the workflow",async function(){
 fs.writeFileSync('Data/workflowdata.json', JSON.stringify(Information, null, 2), 'utf-8');
 })
 
-After(async function () {
-  await browser.close();
+After(async function (this: any) {
+  if (page) {
+    const videoPath = await page.video()?.path();
+    if (videoPath) {
+      console.log(`Video saved at: ${videoPath}`);
+
+      // Read video file as a buffer
+      const videoBuffer = fs.readFileSync(videoPath);
+
+      // Attach the video buffer to the Cucumber report
+      this.attach(videoBuffer, 'video/webm');
+      console.log("video has been attached to the report")
+    }
+
+    await page.close();
+  }
+
+  if (browser) {
+    await browser.close();
+  }
 });
+
+AfterAll(async function () {
+  exec("ts-node generateReporter.ts", (err, stdout, stderr) => {
+    if (err) {
+      console.error("Error generating HTML report:", err);
+    } else {
+      console.log("Cucumber HTML report generated successfully!");
+    }
+  });
+})
+
 
 
 

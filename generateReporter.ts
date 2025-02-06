@@ -21,8 +21,8 @@ const options: reporter.Options = {
   launchReport: true,  // Set to true if you want it to open in the browser automatically
   metadata: {
     "Test Run Timestamp": timestamp,
-    "Project": "Automation Test Status",
-    "Execution Environment": "Staging",  // Change to Production, Dev, etc.
+    "Project": "Spendflo Automation",
+    "Execution Environment": "Production",  // Change to Production, Dev, etc.
     "Platform": process.platform,  // Automatically detects OS (Windows, Mac, Linux)
     "Node.js Version": process.version,
     "Cucumber Version": "^11.2.0",  // Replace with actual version
