@@ -1,8 +1,8 @@
 {
     "default": {
       "format":["json:reports/cucumber_report.json", "progress"],
-      "paths": ["tests/Features/**/wf.feature"],
-      "require": ["tests/Steps/**/wf.steps.ts"],
+      "paths": ["tests/Features/**/agreements.feature"],
+      "require": ["tests/Steps/**/agreements.steps.ts"],
       "dryRun": false,
       "requireModule": ["ts-node/register"],
       "formatOptions": {

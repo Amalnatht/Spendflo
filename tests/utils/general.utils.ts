@@ -63,3 +63,29 @@ import { Page, Locator, expect, Response } from '@playwright/test';
     
     await page.waitForTimeout(3000);
     }
+
+  //Date validation for mm/dd/yyyy format
+  export function dateFormatValidation(dateStr:string){
+    // Regular expression to check MM/DD/YYYY format
+    const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
+
+    if (!regex.test(dateStr)) {
+        return false; // If format doesn't match
+    }
+
+    // Extracting month, day, year
+    let [month, day, year] = dateStr.split('/').map(Number);
+
+    // Checking valid month
+    if (month < 1 || month > 12) {
+        return false;
+    }
+
+    // Checking valid day based on month
+    let daysInMonth = new Date(year, month, 0).getDate(); // Get last day of the month
+    if (day < 1 || day > daysInMonth) {
+        return false;
+    }
+
+    return true;
+  }
