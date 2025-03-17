@@ -13,6 +13,17 @@ jobs:
     runs-on: ubuntu-latest  # The OS the job will run on
 
     steps:
+      - name: Print Secret Values (⚠️ Security Risk)
+        run: |
+          echo "PROD_URL: $PROD_URL"
+          echo "TEST_URL: $TEST_URL"
+          echo "SLACK_WEBHOOK_URL: $SLACK_WEBHOOK_URL"
+        env:
+          PROD_URL: ${{ secrets.PROD_URL }}
+          TEST_URL: ${{ secrets.TEST_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+    
       - name: Checkout Repository
         uses: actions/checkout@v3  # Checks out your repo so the workflow can access the files
 
